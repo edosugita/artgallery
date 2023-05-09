@@ -43,7 +43,7 @@ export default function Cart() {
                 <td>Rp 200.000</td>
                 <td>
                   <div className="d-flex align-items-center h-100">
-                    <button class="btn badge" data-bs-toggle="modal" data-bs-target="#deleteProduct">
+                    <button className="btn badge" data-bs-toggle="modal" data-bs-target="#deleteProduct">
                       <FontAwesomeIcon icon={faTrash} color='white' className="me-2" />
                       Hapus
                     </button>
@@ -60,7 +60,7 @@ export default function Cart() {
                 <td>Rp 200.000</td>
                 <td>
                   <div className="d-flex align-items-center h-100">
-                    <button class="btn badge" data-bs-toggle="modal" data-bs-target="#deleteProduct">
+                    <button className="btn badge" data-bs-toggle="modal" data-bs-target="#deleteProduct">
                       <FontAwesomeIcon icon={faTrash} color='white' className="me-2" />
                       Hapus
                     </button>
@@ -77,7 +77,7 @@ export default function Cart() {
                 <td>Rp 200.000</td>
                 <td>
                   <div className="d-flex align-items-center h-100">
-                    <button class="btn badge" data-bs-toggle="modal" data-bs-target="#deleteProduct">
+                    <button className="btn badge" data-bs-toggle="modal" data-bs-target="#deleteProduct">
                       <FontAwesomeIcon icon={faTrash} color='white' className="me-2" />
                       Hapus
                     </button>
@@ -94,7 +94,7 @@ export default function Cart() {
                 <td>Rp 200.000</td>
                 <td>
                   <div className="d-flex align-items-center h-100">
-                    <button class="btn badge" data-bs-toggle="modal" data-bs-target="#deleteProduct">
+                    <button className="btn badge" data-bs-toggle="modal" data-bs-target="#deleteProduct">
                       <FontAwesomeIcon icon={faTrash} color='white' className="me-2" />
                       Hapus
                     </button>
@@ -112,7 +112,7 @@ export default function Cart() {
               <div className="col-md-6 col-12">
                 <div className="form-check">
                   <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                  <label className="form-check-label" for="flexCheckDefault">
+                  <label className="form-check-label" htmlFor="flexCheckDefault">
                     Pilih Semua
                   </label>
                 </div>

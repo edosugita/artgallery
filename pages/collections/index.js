@@ -17,16 +17,16 @@ export default function MyCollection() {
                     <Collections />
                     <nav aria-label="Page navigation example">
                         <ul class="pagination pagination-sm justify-content-center">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
+                            <li className="page-item">
+                                <a className="page-link" href="#" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
+                            <li className="page-item"><a className="page-link" href="#">1</a></li>
+                            <li className="page-item"><a className="page-link" href="#">2</a></li>
+                            <li className="page-item"><a className="page-link" href="#">3</a></li>
+                            <li className="page-item">
+                                <a className="page-link" href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                                 </a>
                             </li>

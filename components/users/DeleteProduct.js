@@ -3,7 +3,7 @@ import style from '@/styles/Modal.module.css'
 export default function DeleteProduct() {
   return (
     <>
-        <div className="modal fade" id="deleteProduct" tabindex="-1" aria-labelledby="deleteProductLabel" aria-hidden="true">
+        <div className="modal fade" id="deleteProduct" tabIndex="-1" aria-labelledby="deleteProductLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered">
                 <div className={style.modal_content}>
                     <div className={style.modal_header}>

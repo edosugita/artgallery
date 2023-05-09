@@ -31,7 +31,7 @@ export default function Notification() {
                 <td>Congratulations on winning the bid for my artwork! Your appreciation for the piece and support for my artistic endeavors means a lot to me. I hope the painting brings you as much joy and inspiration as it brought me while creating it. Thank you for your patronage and I hope to have the opportunity to share more of my art with you in the future.</td>
                 <td>
                   <div className="d-flex align-items-center h-100">
-                    <button class="btn badge" data-bs-toggle="modal" data-bs-target="#deleteMessage">
+                    <button className="btn badge" data-bs-toggle="modal" data-bs-target="#deleteMessage">
                       <FontAwesomeIcon icon={faTrash} color='white' className="me-2" />
                       Hapus
                     </button>
@@ -42,7 +42,7 @@ export default function Notification() {
                 <td>Congratulations on winning the bid for my artwork! Your appreciation for the piece and support for my artistic endeavors means a lot to me. I hope the painting brings you as much joy and inspiration as it brought me while creating it. Thank you for your patronage and I hope to have the opportunity to share more of my art with you in the future.</td>
                 <td>
                   <div className="d-flex align-items-center h-100">
-                    <button class="btn badge" data-bs-toggle="modal" data-bs-target="#deleteMessage">
+                    <button className="btn badge" data-bs-toggle="modal" data-bs-target="#deleteMessage">
                       <FontAwesomeIcon icon={faTrash} color='white' className="me-2" />
                       Hapus
                     </button>
@@ -53,7 +53,7 @@ export default function Notification() {
                 <td>Congratulations on winning the bid for my artwork! Your appreciation for the piece and support for my artistic endeavors means a lot to me. I hope the painting brings you as much joy and inspiration as it brought me while creating it. Thank you for your patronage and I hope to have the opportunity to share more of my art with you in the future.</td>
                 <td>
                   <div className="d-flex align-items-center h-100">
-                    <button class="btn badge" data-bs-toggle="modal" data-bs-target="#deleteMessage">
+                    <button className="btn badge" data-bs-toggle="modal" data-bs-target="#deleteMessage">
                       <FontAwesomeIcon icon={faTrash} color='white' className="me-2" />
                       Hapus
                     </button>
@@ -64,7 +64,7 @@ export default function Notification() {
                 <td>Congratulations on winning the bid for my artwork! Your appreciation for the piece and support for my artistic endeavors means a lot to me. I hope the painting brings you as much joy and inspiration as it brought me while creating it. Thank you for your patronage and I hope to have the opportunity to share more of my art with you in the future.</td>
                 <td>
                   <div className="d-flex align-items-center h-100">
-                    <button class="btn badge" data-bs-toggle="modal" data-bs-target="#deleteMessage">
+                    <button className="btn badge" data-bs-toggle="modal" data-bs-target="#deleteMessage">
                       <FontAwesomeIcon icon={faTrash} color='white' className="me-2" />
                       Hapus
                     </button>
@@ -75,7 +75,7 @@ export default function Notification() {
                 <td>Congratulations on winning the bid for my artwork! Your appreciation for the piece and support for my artistic endeavors means a lot to me. I hope the painting brings you as much joy and inspiration as it brought me while creating it. Thank you for your patronage and I hope to have the opportunity to share more of my art with you in the future.</td>
                 <td>
                   <div className="d-flex align-items-center h-100">
-                    <button class="btn badge" data-bs-toggle="modal" data-bs-target="#deleteMessage">
+                    <button className="btn badge" data-bs-toggle="modal" data-bs-target="#deleteMessage">
                       <FontAwesomeIcon icon={faTrash} color='white' className="me-2" />
                       Hapus
                     </button>
@@ -86,7 +86,7 @@ export default function Notification() {
                 <td>Congratulations on winning the bid for my artwork! Your appreciation for the piece and support for my artistic endeavors means a lot to me. I hope the painting brings you as much joy and inspiration as it brought me while creating it. Thank you for your patronage and I hope to have the opportunity to share more of my art with you in the future.</td>
                 <td>
                   <div className="d-flex align-items-center h-100">
-                    <button class="btn badge" data-bs-toggle="modal" data-bs-target="#deleteMessage">
+                    <button className="btn badge" data-bs-toggle="modal" data-bs-target="#deleteMessage">
                       <FontAwesomeIcon icon={faTrash} color='white' className="me-2" />
                       Hapus
                     </button>

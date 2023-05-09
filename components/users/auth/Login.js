@@ -1,6 +1,7 @@
 import style from '@/styles/Modal.module.css'
+import Swal from "sweetalert2";
 import { useState } from 'react'
-import { signIn, csrfToken } from 'next-auth/react'
+import { signIn, getCsrfToken } from 'next-auth/react'
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from 'next/router';
@@ -30,7 +31,20 @@ export default function Login() {
       if (response.error) {
         setErrorMessage("Invalid email/username or password");
       } else {
-        router.reload()
+        await Swal.fire({
+          title: 'Login successful!',
+          text: 'Welcome to ArtGallery',
+          icon: "success",
+          timer: 1000,
+          background: '#141414',
+          color: '#FFFFFF',
+          timerProgressBar: true,
+          showConfirmButton: false,
+          progressStepsColor: '#E30813',
+          willClose(popup) {
+            router.reload()
+          },
+        })
       }
     } catch (error) {
       console.log(error)
@@ -60,13 +74,16 @@ export default function Login() {
     let passwordIsValid = true;
     let passwordErrors = [];
 
-    if (!/(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
+    if (password === ''){
+        passwordIsValid = false;
+        passwordErrors.push("");
+    } else if (!/(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
       passwordIsValid = false;
       passwordErrors.push("Password must contain a combination of uppercase and lowercase letters.");
-    }else if (!/(?=.*\d)(?=.*[a-zA-Z])/.test(password)) {
+    } else if (!/(?=.*\d)(?=.*[a-zA-Z])/.test(password)) {
       passwordIsValid = false;
       passwordErrors.push("Password must contain a combination of letters and numbers.");
-    }else if (!/(?=.*[@#$%^&+=!])(?=.*[a-zA-Z])(?=.*\d)/.test(password)) {
+    } else if (!/(?=.*[@#$%^&+=!])(?=.*[a-zA-Z])(?=.*\d)/.test(password)) {
       passwordIsValid = false;
       passwordErrors.push("Password must contain at least one special character, such as @, #, or $.");
     } else if (password.length < 8) {
@@ -84,7 +101,7 @@ export default function Login() {
 
   return (
     <>
-        <div className="modal fade" id="Login" tabindex="-1" aria-labelledby="LoginLabel" aria-hidden="true">
+        <div className="modal fade" id="Login" tabIndex="-1" aria-labelledby="LoginLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered">
                 <div className={style.modal_content}>
                     <div className={style.modal_header}>
@@ -94,12 +111,12 @@ export default function Login() {
                     <form onSubmit={handleSubmit}>
                     <div className={`modal-body ${style.modal_body}`}>
                         {errorMessage && <>
-                            <div class="alert alert-danger text-center" role="alert">{errorMessage}</div>
+                            <div className="alert alert-danger text-center" role="alert">{errorMessage}</div>
                         </>}
-                        <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+                        <input name="getCsrfToken" type="hidden" defaultValue={getCsrfToken()} />
                         <label htmlFor="email" className="form-label">EMAIL/USERNAME</label>
                         <input type="text" className={style.form_control} name='email' id="email" placeholder="type your email/username here ..." value={email} onChange={handleEmailChange} required />
-                        <div id="email" class="form-text">
+                        <div id="email" className="form-text">
                             {emailError && <span className="text-danger">{emailError}</span>}
                             {usernameError && <span className="text-danger">{usernameError}</span>}
                         </div>
@@ -110,7 +127,7 @@ export default function Login() {
                             <input type={showPassword ? "text" : "password"} className={style.form_control} name='password' id="password" placeholder="type your password here ..." value={password} onChange={(event) => setPassword(event.target.value)} required />
                             <FontAwesomeIcon onClick={handleTogglePassword} className={style.icon_passw} icon={showPassword ? faEyeSlash : faEye} color='grey' />
                         </div>
-                        <div id="password" class="form-text">
+                        <div id="password" className="form-text">
                             {!passwordIsValid && passwordErrors.map((error, index) => (
                                 <span key={index} className="text-danger">{error}</span>
                             ))}

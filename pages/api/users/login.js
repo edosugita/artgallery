@@ -19,7 +19,6 @@ export default async function handler(req, res) {
             }
             
             const user = rows[0]
-            console.log(user)
             const match = await compare(password, user.password)
 
             if (!match) {

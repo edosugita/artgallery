@@ -20,11 +20,11 @@ export default function Contact() {
                 <form>
                     <h3 className="mb-3 text-center">Contact Us</h3>
                     <div className={`mb-3`}>
-                        <label for="email" className="form-label">EMAIL</label>
+                        <label htmlFor="email" className="form-label">EMAIL</label>
                         <input type="email" className={style.form_control} name='email' id="email" placeholder="email@email.com" />
                     </div>
                     <div className={`mb-3`}>
-                        <label for="message" className="form-label">MESSSAGE</label>
+                        <label htmlFor="message" className="form-label">MESSSAGE</label>
                         <textarea className={style.form_control} id="message" rows="3" placeholder="Message"></textarea>
                     </div>
                     <div className={`mb-3`}>

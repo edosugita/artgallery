@@ -49,36 +49,36 @@ export default function Navbar() {
                     </form>
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
                         <li className="nav-item">
-                            <Link href={'/'} className={`${style.nav_link} ${router.pathname == '/' ? 'active' : ''}`}>
+                            <Link href={'/'} className={`${style.nav_link} ${router.pathname === '/' ? 'active' : ''}`}>
                                 Home
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link href={'/gallery'} className={`${style.nav_link} ${router.pathname == '/gallery' ? 'active' : ''}`}>
+                            <Link href={'/gallery'} className={`${style.nav_link} ${router.pathname === '/gallery' ? 'active' : ''}`}>
                                 Gallery
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link href={'/auction'} className={`${style.nav_link} ${router.pathname == '/auction' ? 'active' : ''}`}>
+                            <Link href={'/auction'} className={`${style.nav_link} ${router.pathname === '/auction' ? 'active' : ''}`}>
                                Auction
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link href={'/contact'} className={`${style.nav_link} ${router.pathname == '/contact' ? 'active' : ''}`}>
+                            <Link href={'/contact'} className={`${style.nav_link} ${router.pathname === '/contact' ? 'active' : ''}`}>
                                 ContactUs
                             </Link>
                         </li>
                         {session !== null? (
                             <>
                             <li className="nav-item">
-                                <Link className={`${style.nav_link} ${router.pathname == '/notification' ? 'active' : ''}`} href="/notification">
+                                <Link className={`${style.nav_link} ${router.pathname === '/notification' ? 'active' : ''}`} href="/notification">
                                     <div className={style.circle}>
                                         <FontAwesomeIcon icon={faBell} />
                                     </div>
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className={`${style.nav_link} ${router.pathname == '/cart' ? 'active' : ''}`} href="/cart">
+                                <Link className={`${style.nav_link} ${router.pathname === '/cart' ? 'active' : ''}`} href="/cart">
                                     <div className={style.circle}>
                                         <FontAwesomeIcon icon={faCartShopping} />
                                     </div>
@@ -102,26 +102,26 @@ export default function Navbar() {
                                     )}
                                 </div>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end">                                
+                            <ul className="dropdown-menu dropdown-menu-end">
                                 {session === null ? (
                                 <>
-                                    <li><a href='#' class="dropdown-item" data-bs-toggle="modal" data-bs-target="#Login">Login</a></li>
-                                    <li><a href='#' class="dropdown-item" data-bs-toggle="modal" data-bs-target="#Register">Register</a></li>
+                                    <li><a href='#' className="dropdown-item" data-bs-toggle="modal" data-bs-target="#Login">Login</a></li>
+                                    <li><a href='#' className="dropdown-item" data-bs-toggle="modal" data-bs-target="#Register">Register</a></li>
                                 </>
                                 ) : (
                                     <>
                                     <li>
-                                        <Link href="/profile" className={`dropdown-item ${router.pathname == '/profile' ? 'active' : ''}`}>
+                                        <Link href="/profile" className={`dropdown-item ${router.pathname === '/profile' ? 'active' : ''}`}>
                                             Profile
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link href="/collections" className={`dropdown-item ${router.pathname == '/collections' ? 'active' : ''}`}>
+                                        <Link href="/collections" className={`dropdown-item ${router.pathname === '/collections' ? 'active' : ''}`}>
                                             My Collections
                                         </Link>
                                     </li>
-                                    <li><hr class="dropdown-divider"/></li>
-                                    <li><a href='#' class="dropdown-item" onClick={handleLogout}>Logout</a></li>     
+                                    <li><hr className="dropdown-divider"/></li>
+                                    <li><a href='#' className="dropdown-item" onClick={handleLogout}>Logout</a></li>
                                     </>
                                 )}
                             </ul>

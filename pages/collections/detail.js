@@ -1,13 +1,9 @@
 import { useEffect } from 'react'
 import Footer from '@/components/users/Footer'
 import Navbar from '@/components/users/Navbar'
-import CarouselNewsArt from '@/components/users/carausel/CarouselNewsArt'
-import CarouselSale from '@/components/users/carausel/CarouselSale'
 import style from '@/styles/Detail.module.css'
 import Image from 'next/image'
 import ArtTest from '@/public/images/png/Image.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 export default function CollectionsDetail() {
     useEffect(() => {

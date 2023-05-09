@@ -3,7 +3,7 @@ import style from '@/styles/Modal.module.css'
 export default function PlaceBid() {
   return (
     <>
-        <div className="modal fade" id="placeBid" tabindex="-1" aria-labelledby="placeBidLabel" aria-hidden="true">
+        <div className="modal fade" id="placeBid" tabIndex="-1" aria-labelledby="placeBidLabel" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered">
                 <div className={style.modal_content}>
                     <div className={style.modal_header}>
@@ -12,7 +12,7 @@ export default function PlaceBid() {
                     </div>
                     <form>
                         <div className={`modal-body ${style.modal_body}`}>
-                            <label for="bid" className="form-label">Place your bid more than the latest best bid!</label>
+                            <label htmlFor="bid" className="form-label">Place your bid more than the latest best bid!</label>
                             <input type="text" className={style.form_control} name='bid' id="bid" placeholder="Place your bid here ..." />
                         </div>
                         <div className={style.modal_footer}>

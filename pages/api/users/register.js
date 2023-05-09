@@ -9,6 +9,7 @@ export default async function register(req, res) {
     const hashedPassword = await hash(password, 10)
     const avatar = 'avatar.jpg'
     const role = 'user'
+    const phoneNumber = phone.substring(1)
 
     try {
         const connection = await connect();
@@ -51,7 +52,7 @@ export default async function register(req, res) {
                 username,
                 email,
                 hashedPassword,
-                phone,
+                phoneNumber,
                 avatar,
                 role
             ]
