@@ -1,0 +1,727 @@
+{
+	"info": {
+		"_postman_id": "d5bea69e-d0c5-4ef1-a2d7-d33a74e823e3",
+		"name": "ArtGallery",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17030948"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "Update Name",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Edo Sugita Ibrahim\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/users/updates/name/4a465b4f-cb5e-4cbf-9527-f50b8d275b9f",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"updates",
+										"name",
+										"4a465b4f-cb5e-4cbf-9527-f50b8d275b9f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Username",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"Esion\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/users/updates/username/4a465b4f-cb5e-4cbf-9527-f50b8d275b9f",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"updates",
+										"username",
+										"4a465b4f-cb5e-4cbf-9527-f50b8d275b9f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Email",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"edosugita.es@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/users/updates/email/4a465b4f-cb5e-4cbf-9527-f50b8d275b9f",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"updates",
+										"email",
+										"4a465b4f-cb5e-4cbf-9527-f50b8d275b9f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Password",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"password\": \"Wariksasat12@\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/users/updates/password/4a465b4f-cb5e-4cbf-9527-f50b8d275b9f",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"updates",
+										"password",
+										"4a465b4f-cb5e-4cbf-9527-f50b8d275b9f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Phone",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"phone\": \"82240709305\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/users/updates/phone/4a465b4f-cb5e-4cbf-9527-f50b8d275b9f",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"updates",
+										"phone",
+										"4a465b4f-cb5e-4cbf-9527-f50b8d275b9f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Avatar",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"avatar\": \"Edo Sugita Ibrahim\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/users/updates/avatar/4a465b4f-cb5e-4cbf-9527-f50b8d275b9f",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"updates",
+										"avatar",
+										"4a465b4f-cb5e-4cbf-9527-f50b8d275b9f"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:3000/api/users/4a465b4f-cb5e-4cbf-9527-f50b8d275b9f",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"4a465b4f-cb5e-4cbf-9527-f50b8d275b9f"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"Edo Sugita Ibrahim\",\r\n    \"username\" : \"Esion\",\r\n    \"email\" : \"edosugita.es@gmail.com\",\r\n    \"password\"  : \"Wariksasat12@\",\r\n    \"phone\" : \"82240709305\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/users/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "jwt",
+							"jwt": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "isSecretBase64Encoded",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "algorithm",
+									"value": "HS256",
+									"type": "string"
+								},
+								{
+									"key": "payload",
+									"value": "{}",
+									"type": "string"
+								},
+								{
+									"key": "headerPrefix",
+									"value": "Bearer",
+									"type": "string"
+								},
+								{
+									"key": "queryParamKey",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "header",
+									"value": "{}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"esion\",\r\n    \"password\": \"Wariksasat12@\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/api/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Data Product",
+			"item": [
+				{
+					"name": "Get Data All Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/data/product/all?kategori=realism&limit=6",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"product",
+								"all"
+							],
+							"query": [
+								{
+									"key": "kategori",
+									"value": "realism"
+								},
+								{
+									"key": "limit",
+									"value": "6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data Discount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/data/product/discount",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"product",
+								"discount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data Bid",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/data/product/bid",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"product",
+								"bid"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data Sell",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/data/product/sell",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"product",
+								"sell"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post Data Product",
+			"item": [
+				{
+					"name": "Post Data Sell",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uuid_user\": \"4a465b4f-cb5e-4cbf-9527-f50b8d275b9f\",\r\n    \"artname\": \"Data Sepuluh\",\r\n    \"slug\": \"data-sepuluh\",\r\n    \"description\": \"deskripsi data sepuluh hanya sebagai contoh\",\r\n    \"dimension\": \"10 x 10\",\r\n    \"discount\": null,\r\n    \"dateStartBid\": null,\r\n    \"clockStartBid\": null,\r\n    \"dateEndbid\": null,\r\n    \"clockEndBid\": null,\r\n    \"bid_price\": null,\r\n    \"price\": 10000000,\r\n    \"kategori\": [\"Expressionism\", \"Manga\", \"Collage technique\"],\r\n    \"label\": \"sell\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/data/product/add/new",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"product",
+								"add",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Data Bid",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uuid_user\": \"4a465b4f-cb5e-4cbf-9527-f50b8d275b9f\",\r\n    \"artname\": \"Data Sepuluh Bid\",\r\n    \"slug\": \"data-sepuluh-bid\",\r\n    \"description\": \"deskripsi data sepulih bid hanya sebagai contoh\",\r\n    \"dimension\": \"10 x 10\",\r\n    \"discount\": null,\r\n    \"dateStartBid\": \"2023-06-01\",\r\n    \"dateEndbid\": \"2023-06-10\",\r\n    \"clockStartBid\": \"10:00\",\r\n    \"clockEndBid\": \"17:00\",\r\n    \"bid_price\": 5000000,\r\n    \"price\": 10000000,\r\n    \"kategori\": [\"Expressionism\", \"Manga\", \"Collage technique\"],\r\n    \"label\": \"sell\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/data/product/add/new",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"product",
+								"add",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Data Discount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"uuid_user\": \"4a465b4f-cb5e-4cbf-9527-f50b8d275b9f\",\r\n    \"artname\": \"Data Sepuluh Diskon\",\r\n    \"slug\": \"data-sepuluh-diskon\",\r\n    \"description\": \"deskripsi data sepuluh diskon hanya sebagai contoh\",\r\n    \"dimension\": \"10 x 10\",\r\n    \"discount\": 20,\r\n    \"dateStartBid\": null,\r\n    \"clockStartBid\": null,\r\n    \"dateEndbid\": null,\r\n    \"clockEndBid\": null,\r\n    \"bid_price\": null,\r\n    \"price\": 10000000,\r\n    \"kategori\": [\"Expressionism\", \"Manga\", \"Collage technique\"],\r\n    \"label\": \"sell\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/data/product/add/new",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"product",
+								"add",
+								"new"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post Data Information",
+			"item": [
+				{
+					"name": "Post Data Information",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Test Information Sepuluh\",\r\n    \"slug\": \"test-information-sepuluh\",\r\n    \"information\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/data/information/add",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"information",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Data Information",
+			"item": [
+				{
+					"name": "Get All Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/data/information/all",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"information",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data By Slug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/data/information/slug?slug=test-information-sepuluh",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"information",
+								"slug"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "test-information-sepuluh"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post Data Event",
+			"item": [
+				{
+					"name": "Post Data Event",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Test Event Sepuluh\",\r\n    \"slug\": \"test-event-sepuluh\",\r\n    \"content\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\",\r\n    \"dateEvent\": \"2023-05-10 04:16:15.000000\",\r\n    \"endEvent\": \"2023-06-10 04:16:15.000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/data/event/add",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"event",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Data Event",
+			"item": [
+				{
+					"name": "Get All Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/data/event/all",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"event",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data By Slug",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/data/event/slug?slug=test-event-sepuluh",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"event",
+								"slug"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "test-event-sepuluh"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
