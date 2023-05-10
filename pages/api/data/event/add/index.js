@@ -15,7 +15,7 @@ export default async function Add(req, res) {
             const connection = await connect()
 
             const [rows] = await connection.query(
-                'INSERT INTO event (title, slug, content, image, date_event, end_event) VALUES (?, ?, ?, ?, ?, ?)',
+                'INSERT INTO event (title, [slug], content, image, date_event, end_event) VALUES (?, ?, ?, ?, ?, ?)',
                 [
                     title,
                     slug,

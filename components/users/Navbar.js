@@ -64,6 +64,11 @@ export default function Navbar() {
                             </Link>
                         </li>
                         <li className="nav-item">
+                            <Link href={'/news'} className={`${style.nav_link} ${router.pathname === '/news' ? 'active' : ''}`}>
+                               Information
+                            </Link>
+                        </li>
+                        <li className="nav-item">
                             <Link href={'/contact'} className={`${style.nav_link} ${router.pathname === '/contact' ? 'active' : ''}`}>
                                 ContactUs
                             </Link>

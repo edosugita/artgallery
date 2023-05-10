@@ -62,7 +62,7 @@ export default function SectionOne() {
                                             />
                                             <Link
                                                 className={style.link_detail}
-                                                href={`/detail/${item.id}`}
+                                                href={`/detail/${item.slug}`}
                                             >
                                                 See Detail
                                             </Link>

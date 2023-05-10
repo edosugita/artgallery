@@ -13,7 +13,6 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 export default function Detail() {
     const router = useRouter()
     const {slug} = router.query
-    console.log(slug)
     const [data, setData] = useState(null)
 
     useEffect(() => {
@@ -22,7 +21,6 @@ export default function Detail() {
                 const response = await fetch(`http://localhost:3000/api/data/product/slug?slug=${slug}`)
                 const data = await response.json()
                 setData(data[0])
-                console.log(data[0])
             } catch (error) {
                 console.log(error)
             }

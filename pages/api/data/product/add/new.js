@@ -18,7 +18,7 @@ export default async function New(req, res) {
             const connection = await connect()
 
             const [rows] = await connection.query(
-                'INSERT INTO arts (uuid_art, uuid_user, artname, slug, description, image, dimension, discount, date_start_bid, clock_start_bid, date_end_bid, clock_end_bid, bid_price, price, kategori, label) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                'INSERT INTO arts (uuid_art, uuid_user, artname, [slug], description, image, dimension, discount, date_start_bid, clock_start_bid, date_end_bid, clock_end_bid, bid_price, price, kategori, label) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
                 [
                     uuid,
                     uuid_user,

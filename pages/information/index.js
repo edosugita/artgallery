@@ -29,7 +29,7 @@ export default function Information() {
                                 </div>
                                 <div className={style.section_three_desc}>
                                     <span>Menurut laporan terbaru, pasar seni global mengalami peningkatan yang signifikan dalam penjualan karya seni kontemporer pada tahun ini. Beberapa karya seni terkenal seperti lukisan, patung, dan foto-foto seniman terkemuka telah terjual dengan harga rekor di lelang seni terkemuka.</span>
-                                    <Link href='/information/detail'>
+                                    <Link href='/information/detail/[slug]'>
                                         See all ..
                                     </Link>
                                 </div>
