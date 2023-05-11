@@ -34,7 +34,6 @@ export default function Home() {
                 <SectionTwo />
                 <SectionThree />
                 <SectionFour />
-                <SectionFive />
 
                 {/* SECTION SIX 'Images' */}
                 <section className={style.section_six}>

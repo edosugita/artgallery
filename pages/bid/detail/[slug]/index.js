@@ -7,11 +7,15 @@ import Image from 'next/image'
 import CarouselOnGoing from '@/components/users/carausel/CarouselOnGoing'
 import CarouselUpcoming from '@/components/users/carausel/CarouselUpcoming'
 import { format } from 'date-fns'
+import PlaceBid from "@/components/users/PlaceBid"
+import {getSession} from "next-auth/react";
 
 export default function BidDetail() {
     const router = useRouter()
     const [data, setData] = useState(null)
+    const [dataBid, setDataBid] = useState(null)
     const {slug} = router.query
+    const [session, setSession] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
@@ -25,6 +29,28 @@ export default function BidDetail() {
         }
         fetchData()
     }, [slug, data])
+
+    useEffect(() => {
+        const fetchSession = async () => {
+            const session = await getSession();
+            setSession(session);
+        };
+        fetchSession();
+    }, [session]);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await fetch(`http://localhost:3000/api/data/product/slug?slug=${slug}`)
+                const data = await response.json()
+                setData(data[0])
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchData()
+    }, []);
+
 
     const [timeLeft, setTimeLeft] = useState({
         hours: 0,
@@ -69,7 +95,7 @@ export default function BidDetail() {
                                     {data && <Image src={'/images/png/' + data.image} width="500" height="500" alt='Images' />}
                                 </div>
                             </div>
-                            <div className="col-lg-5 col-md-12">
+                            <div className="col-lg-5 col-md-12 d-flex flex-column justify-content-between">
                                 <div className="col-12 mb-5">
                                     <div className={style.information}>
                                         {data &&
@@ -87,7 +113,7 @@ export default function BidDetail() {
                                             <div className="col-md-6 col-sm-6 col-12 mb-3">
                                                 <div className={style.box}>
                                                     <p>Open Bid</p>
-                                                    {data && <h5>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(data.price)}</h5>}
+                                                    {data && <h5>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(data.bid_price)}</h5>}
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-sm-6 col-12 mb-3">
@@ -110,13 +136,15 @@ export default function BidDetail() {
                                                 </div>
                                             </div>
                                         </div>
+                                        {session !== null ? (
                                         <div className={style.buy_button}>
                                             <div className="row mt-3">
                                                 <div className="col-12">
-                                                    <input className={`btn btn-danger w-100 ${style.btnbuy}`} type="button" value={'Buy Now'} />
+                                                    <input className={`btn btn-danger w-100 ${style.btnbuy}`} type="button" value={'Buy Now'} data-bs-toggle="modal" data-bs-target="#placeBid" />
                                                 </div>
                                             </div>
                                         </div>
+                                        ) : <></>}
                                     </div>
                                 </div>
                             </div>
@@ -165,6 +193,8 @@ export default function BidDetail() {
             <footer>
                 <Footer />
             </footer>
+
+            <PlaceBid />
         </>
     )
 }
