@@ -6,14 +6,16 @@ import CarouselNewsArt from '@/components/users/carausel/CarouselNewsArt'
 import CarouselSale from '@/components/users/carausel/CarouselSale'
 import style from '@/styles/Detail.module.css'
 import Image from 'next/image'
-import ArtTest from '@/public/images/png/Image.png'
+import Swal from 'sweetalert2'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { getSession } from 'next-auth/react'
 
 export default function Detail() {
     const router = useRouter()
     const {slug} = router.query
     const [data, setData] = useState(null)
+    const [session, setSession] = useState(null)
 
     useEffect(() => {
         async function fetchData() {
@@ -29,12 +31,45 @@ export default function Detail() {
     }, [slug, data])
 
     useEffect(() => {
+        const fetchSession = async () => {
+            const session = await getSession();
+            setSession(session);
+        };
+        
+        fetchSession();
+    }, [session]);
+
+    useEffect(() => {
         document.title = 'Art Galery'
     }, [])
 
-    console.log(data)
+    const handleAddToCart = async () => {
+        const uuidUser = session?.user?.user.uuid_user
+        const uuidArt = data.uuid_art
 
-    // const formattedPrice = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(data.price);
+        try {
+            const response = await fetch(`http://localhost:3000/api/data/cart/add?uuidUser=${uuidUser}&uuidArt=${uuidArt}`, { method: 'POST' })
+            const result = await response.json()
+
+            await Swal.mixin({
+                title: 'Success',
+                text: 'Success add Arts to cart',
+                icon: 'success',
+                timer: 1000,
+                background: '#141414',
+                color: '#FFFFFF',
+                timerProgressBar: true,
+                showConfirmButton: false,
+                progressStepsColor: '#E30813',
+                willClose(popup) {
+                router.reload()
+                }
+            }).fire()
+        } catch (error) {
+         console.log(error)
+        }
+    }
+
     return (
         <>
             <header>
@@ -70,7 +105,7 @@ export default function Detail() {
                                                     <input className={`btn btn-danger w-100 ${style.btnbuy}`} type="button" value={'Buy Now'} />
                                                 </div>
                                                 <div className="col-5">
-                                                    <button className={`btn text-light w-100 ${style.btnshop}`}>
+                                                    <button className={`btn text-light w-100 ${style.btnshop}`} onClick={handleAddToCart}>
                                                         <FontAwesomeIcon className='me-3' icon={faCartShopping} />
                                                         Add to Cart
                                                     </button>

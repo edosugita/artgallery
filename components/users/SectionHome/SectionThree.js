@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import ArtTest from '@/public/images/png/Image.png'
 import style from '@/styles/SectionHome/SectionThree.module.css'
 import {useEffect, useState} from "react";
 
@@ -45,7 +44,7 @@ export default function SectionThree() {
     };
 
     const handleClick = (e, path) => {
-        path === 'see' ? window.location.href='/information/detail' : ''
+        path === 'see' ? window.location.href='/news' : ''
     }
     return (
         <>
@@ -73,7 +72,7 @@ export default function SectionThree() {
                                 </div>
                                 <div className={style.section_three_desc}>
                                     <span>{item.information}</span>
-                                    <Link href={'/information/detail/' + item.slug}>
+                                    <Link href={'/news/detail/' + item.slug}>
                                         See all ..
                                     </Link>
                                 </div>
@@ -84,7 +83,7 @@ export default function SectionThree() {
                     <div className='col-md-5'>
                         <div className={`${style.list_information}`}>
                             {data.map((item, index) => (
-                                <Link className="text-decoration-none text-light" href={'/information/detail/' + item.slug} key={index}>
+                                <Link className="text-decoration-none text-light" href={'/news/detail/' + item.slug} key={index}>
                                     <div className="row">
                                         <div className="col-4">
                                             <div className={style.list_img}>

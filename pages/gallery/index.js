@@ -65,6 +65,11 @@ export default function Gallery() {
                             <Image src={`/images/png/${item.image}`} alt='Image Slider' width="500" height="500" className='rounded' />
                             <div className={styles.card_body}>
                               <h5>{item.artname}</h5>
+                              <div className="mb-3 mt-2">
+                                {item.kategori.split(",").map((kategori) => (
+                                  <span key={kategori} className="badge me-2 mb-1" style={{background: '#2E2E2E', color: '#EBEBEB'}}>{kategori}</span>
+                                ))}
+                              </div>
                               <p><span>By</span> {item.username}</p>
                               <div className={`d-flex align-items-center gap-2 ${styles.discount}`}>
                                 { item.discount === null ? (
@@ -85,25 +90,6 @@ export default function Gallery() {
                         </Link>
                       </div>
                   ))}
-
-                  {/*{getPaginatedItems(items, currentPage).map((item) => (*/}
-                  {/*    <div className="col-lg-3 col-md-4 col-sm-6 col-12 mb-3" key={item.id}>*/}
-                  {/*      <Link className="text-decoration-none text-light" href={`/detail/${item.id}`}>*/}
-                  {/*        <div className={styles.card}>*/}
-                  {/*          <Image src={`/images/png/${item.image}`} alt='Image Slider' width="500" height="500" className='rounded' />*/}
-                  {/*          <div className={styles.card_body}>*/}
-                  {/*            <h5>{item.artname}</h5>*/}
-                  {/*            <p><span>By</span> {item.username}</p>*/}
-                  {/*            <div className={`d-flex align-items-center gap-2 ${styles.discount}`}>*/}
-                  {/*              <p>{item.discount}%</p>*/}
-                  {/*              <p>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.price)}</p>*/}
-                  {/*            </div>*/}
-                  {/*            <p className={`card-text ${styles.card_text}`}>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.price)}</p>*/}
-                  {/*          </div>*/}
-                  {/*        </div>*/}
-                  {/*      </Link>*/}
-                  {/*    </div>*/}
-                  {/*))}*/}
                 </div>
               </div>
 

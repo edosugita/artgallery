@@ -234,7 +234,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\" : \"Edo Sugita Ibrahim\",\r\n    \"username\" : \"Esion\",\r\n    \"email\" : \"edosugita.es@gmail.com\",\r\n    \"password\"  : \"Wariksasat12@\",\r\n    \"phone\" : \"82240709305\"\r\n}",
+							"raw": "{\r\n    \"name\" : \"Test2\",\r\n    \"username\" : \"tes\",\r\n    \"email\" : \"tes@gmail.com\",\r\n    \"password\"  : \"Wariksasat12@\",\r\n    \"phone\" : \"82240709305\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -722,6 +722,149 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Post Data Cart",
+			"item": [
+				{
+					"name": "Post Data Cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/data/cart/add?uuidUser=4a465b4f-cb5e-4cbf-9527-f50b8d275b9f&uuidArt=75c3c2ad-9a3d-4228-b616-9dd07f7e55de",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"cart",
+								"add"
+							],
+							"query": [
+								{
+									"key": "uuidUser",
+									"value": "4a465b4f-cb5e-4cbf-9527-f50b8d275b9f"
+								},
+								{
+									"key": "uuidArt",
+									"value": "75c3c2ad-9a3d-4228-b616-9dd07f7e55de"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Data Cart",
+			"item": [
+				{
+					"name": "Get Data Cart By UUID User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/data/cart/all?uuidUser=4a465b4f-cb5e-4cbf-9527-f50b8d275b9f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"cart",
+								"all"
+							],
+							"query": [
+								{
+									"key": "uuidUser",
+									"value": "4a465b4f-cb5e-4cbf-9527-f50b8d275b9f"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post Data Notification",
+			"item": [
+				{
+					"name": "Post Data Notification",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"Ini adalah konten percobaan notifikasi ke-2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/data/notification/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"data",
+								"notification",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Data Notification",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/data/notification/get?uuidUser=4a465b4f-cb5e-4cbf-9527-f50b8d275b9f",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"data",
+						"notification",
+						"get"
+					],
+					"query": [
+						{
+							"key": "uuidUser",
+							"value": "4a465b4f-cb5e-4cbf-9527-f50b8d275b9f"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

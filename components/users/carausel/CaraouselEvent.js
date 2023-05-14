@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Component } from "react";
 import Slider from "react-slick";
-import style from '@/styles/SectionHome/SectionFour.module.css'
+import style from '@/styles/Event.module.css'
 import Link from "next/link";
 
 export default class CarouselNewsArt extends Component {
@@ -22,13 +22,13 @@ export default class CarouselNewsArt extends Component {
             className: "center",
             infinite: true,
             centerPadding: "60px",
-            slidesToShow: 5,
+            slidesToShow: 3,
             swipeToSlide: true,
             responsive: [
                 {
                     breakpoint: 992,
                     settings: {
-                        slidesToShow: 4,
+                        slidesToShow: 3,
                         swipeToSlide: true,
                         infinite: true,
                         dots: true,
@@ -62,24 +62,15 @@ export default class CarouselNewsArt extends Component {
                     {data.map((item, index) => (
                         <div key={index}>
                             <div className='me-2 ms-2'>
-                                <Link className="text-decoration-none text-light" href={`/detail/${item.slug}`}>
-                                    <div className={style.card}>
-                                        <Image src={`/images/png/${item.image}`} alt="Image Slider" height="250" width="250" className="rounded"
-                                        />
-                                        <div className={style.card_body}>
-                                            <h5>{item.artname}</h5>
-                                            <div className="mb-3 mt-2">
-                                                {item.kategori.split(",").map((kategori) => (
-                                                    <span key={kategori} className="badge me-2 mb-1" style={{background: '#2E2E2E', color: '#EBEBEB'}}>{kategori}</span>
-                                                ))}
-                                            </div>
-                                            <p>
-                                                <span>By</span> {item.username}
-                                            </p>
-                                            <p className={`card-text ${style.card_text}`}>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.price)}</p>
-                                        </div>
+                                <div className={`d-flex align-items-center rounded p-3 gap-3`} style={{backgroundColor: '#1A1A1A', border: '1px solid #2E2E2E'}}>
+                                    <div className="rounded" style={{width: '100px', height: '100px', overflow: "hidden"}}>
+                                        <Image src={`/images/png/${item.image}`} alt="Image Slider" height="520" width="520" className="rounded" style={{width: 'auto', height: '200px'}} />
                                     </div>
-                                </Link>
+                                    <div className="text">
+                                        <h6 style={{fontSize: '16px'}}>{item.artname}</h6>
+                                        <span style={{fontSize: '12px', color: '#D1D1D1'}}>29 December 2023</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     ))}

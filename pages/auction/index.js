@@ -59,6 +59,11 @@ export default function Auctions() {
                             <Image src={'/images/png/' + item.image} alt='Image Slider' width="500" height="500" className='rounded' />
                             <div className={styles.card_body}>
                               <h5>{item.artname}</h5>
+                              <div className="mb-3 mt-2">
+                                {item.kategori.split(",").map((kategori) => (
+                                  <span key={kategori} className="badge me-2 mb-1" style={{background: '#2E2E2E', color: '#EBEBEB'}}>{kategori}</span>
+                                ))}
+                              </div>
                               <p><span>By</span> {item.username}</p>
                               <span className={styles.bid}>Best Bid</span>
                               <p className="card-text">{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(item.bid_price)}</p>

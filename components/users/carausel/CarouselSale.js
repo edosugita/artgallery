@@ -77,6 +77,11 @@ export default class CarouselSale extends Component {
                                         />
                                         <div className={style.card_body}>
                                             <h5>{item.artname}</h5>
+                                            <div className="mb-3 mt-2">
+                                                {item.kategori.split(",").map((kategori) => (
+                                                    <span key={kategori} className="badge me-2 mb-1" style={{background: '#2E2E2E', color: '#EBEBEB'}}>{kategori}</span>
+                                                ))}
+                                            </div>
                                             <p>
                                                 <span>By</span> {item.username}
                                             </p>

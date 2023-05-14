@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2023 at 04:26 AM
+-- Generation Time: May 14, 2023 at 12:50 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -101,6 +101,31 @@ CREATE TABLE `arts_bid` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `arts_bid`
+--
+
+INSERT INTO `arts_bid` (`id_bid`, `uuid_user`, `uuid_arts`, `price_bid`, `created_at`, `updated_at`) VALUES
+(1, '4a465b4f-cb5e-4cbf-9527-f50b8d275b9f', '0118320c-bc4e-4f1e-8d36-e9e36c12dc48', 10000000, '2023-05-11 01:58:09', '2023-05-11 01:58:09'),
+(2, '4a465b4f-cb5e-4cbf-9527-f50b8d275b9f', '0118320c-bc4e-4f1e-8d36-e9e36c12dc48', 11000000, '2023-05-11 01:58:41', '2023-05-11 01:58:41'),
+(3, 'd80df2d6-d49b-4d0e-bbe7-10d3c628faa8', 'f75cf749-0c77-4115-8bc2-01fd38c9586b', 12000000, '2023-05-11 02:21:05', '2023-05-11 02:23:18'),
+(4, '4a465b4f-cb5e-4cbf-9527-f50b8d275b9f', '7f123614-e035-4491-be9c-153d074c0dfb', 10000000, '2023-05-14 04:35:23', '2023-05-14 04:35:23'),
+(5, '4a465b4f-cb5e-4cbf-9527-f50b8d275b9f', '7f123614-e035-4491-be9c-153d074c0dfb', 11000000, '2023-05-14 04:52:47', '2023-05-14 04:52:47');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `id_cart` int(11) NOT NULL,
+  `uuid_user` varchar(255) NOT NULL,
+  `uuid_art` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -182,6 +207,17 @@ CREATE TABLE `notification` (
   `upadated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `notification`
+--
+
+INSERT INTO `notification` (`id_notification`, `uuid_user`, `content`, `crated_at`, `upadated_at`) VALUES
+(2, '4ced89f0-5b91-43dc-833e-a797d7ae6118', 'Ini adalah konten notifikasi', '2023-05-14 10:07:43', '2023-05-14 10:07:43'),
+(3, 'd80df2d6-d49b-4d0e-bbe7-10d3c628faa8', 'Ini adalah konten notifikasi', '2023-05-14 10:07:43', '2023-05-14 10:07:43'),
+(4, '4a465b4f-cb5e-4cbf-9527-f50b8d275b9f', 'Ini adalah konten percobaan notifikasi ke-2', '2023-05-14 10:08:42', '2023-05-14 10:08:42'),
+(5, '4ced89f0-5b91-43dc-833e-a797d7ae6118', 'Ini adalah konten percobaan notifikasi ke-2', '2023-05-14 10:08:42', '2023-05-14 10:08:42'),
+(6, 'd80df2d6-d49b-4d0e-bbe7-10d3c628faa8', 'Ini adalah konten percobaan notifikasi ke-2', '2023-05-14 10:08:42', '2023-05-14 10:08:42');
+
 -- --------------------------------------------------------
 
 --
@@ -208,7 +244,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_user`, `uuid_user`, `name`, `username`, `email`, `password`, `phone`, `avatar`, `role`, `created_at`, `updated_at`) VALUES
 (1, '4a465b4f-cb5e-4cbf-9527-f50b8d275b9f', 'Edo Sugita Ibrahim', 'Esion', 'edosugita.es@gmail.com', '$2b$10$AneORz2me1U6Nyu2RxDyIecPHRPHnSkGOFWCid0K03EQn82eU.Fte', '82240709305', 'avatar.jpg', 'user', '2023-04-25 14:17:10', '2023-05-06 10:08:22'),
-(2, '4ced89f0-5b91-43dc-833e-a797d7ae6118', 'wagyu', 'wagy', 'playingcard75@gmaiil.com', '$2b$10$2WhbFfK76.a7zPYnWf4DQ.4fBe/t0bRnEf8rpMm/VHeleJ0SnnwF6', '8123456789', 'avatar.jpg', 'user', '2023-05-04 04:38:11', '2023-05-04 05:27:24');
+(2, '4ced89f0-5b91-43dc-833e-a797d7ae6118', 'wagyu', 'wagy', 'playingcard75@gmaiil.com', '$2b$10$2WhbFfK76.a7zPYnWf4DQ.4fBe/t0bRnEf8rpMm/VHeleJ0SnnwF6', '8123456789', 'avatar.jpg', 'user', '2023-05-04 04:38:11', '2023-05-04 05:27:24'),
+(3, 'd80df2d6-d49b-4d0e-bbe7-10d3c628faa8', 'test1', 'test1', 'test@gmail.com', '$2b$10$JtNccNOFR/z94GrKbTFDy.2l633X1fAqhlRF3ljtWPihzU0tF1lzu', '82240709305', 'avatar.jpg', 'user', '2023-05-10 03:47:38', '2023-05-10 03:47:38');
 
 --
 -- Indexes for dumped tables
@@ -226,6 +263,12 @@ ALTER TABLE `arts`
 --
 ALTER TABLE `arts_bid`
   ADD PRIMARY KEY (`id_bid`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id_cart`);
 
 --
 -- Indexes for table `event`
@@ -266,7 +309,13 @@ ALTER TABLE `arts`
 -- AUTO_INCREMENT for table `arts_bid`
 --
 ALTER TABLE `arts_bid`
-  MODIFY `id_bid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `event`
@@ -284,13 +333,13 @@ ALTER TABLE `information`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `id_notification` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_notification` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

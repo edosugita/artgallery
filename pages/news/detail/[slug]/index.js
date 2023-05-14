@@ -75,7 +75,7 @@ export default function DetailInformation() {
                         <div className='col-md-5'>
                             <div className={`${style.list_information}`}>
                                 {dataAll.map((item, index) => (
-                                    <Link className="text-decoration-none text-light" href={'/information/detail/' + item.slug} key={index}>
+                                    <Link className="text-decoration-none text-light" href={'/news/detail/' + item.slug} key={index}>
                                         <div className="row">
                                             <div className="col-4">
                                                 <div className={style.list_img}>
