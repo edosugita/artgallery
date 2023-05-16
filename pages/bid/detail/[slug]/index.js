@@ -113,7 +113,11 @@ export default function BidDetail() {
                         <div className="row">
                             <div className="col-lg-7 col-md-12">
                                 <div className={style.section_img}>
-                                    {data && <Image src={'/images/png/' + data.image} width="500" height="500" alt='Images' />}
+                                    <div style={{height: '450px', width: '100%', overflow: "hidden"}}>
+                                        {data && (
+                                            <Image src={"/images/png/" + data.image} alt="Image Slider" height="520" width="520" className="rounded" style={{height: '100%', width: '100%', display: "block", objectFit:"cover"}} />
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                             <div className="col-lg-5 col-md-12 d-flex flex-column justify-content-between">
