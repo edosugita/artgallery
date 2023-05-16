@@ -89,7 +89,9 @@ export default function Information() {
                                 {dataOne.map((item, index) => (
                                     <div className="information" key={index}>
                                         <div className={style.section_three_img}>
-                                            <Image src={`/images/png/${item.image}`} width={500} height={500} alt='Image New Information' className='rounded'/>
+                                            <div style={{height: '350px', width: '100%', overflow: "hidden"}}>
+                                                <Image src={"/images/png/" + item.image} alt="Image Slider" height="520" width="520" className="rounded" style={{height: '100%', width: '100%', display: "block", objectFit:"cover"}} />
+                                            </div>
                                         </div>
                                         <div className={style.section_three_title}>
                                             <h6>{item.title}</h6>
@@ -111,7 +113,11 @@ export default function Information() {
                                             <div className="row">
                                                 <div className="col-4">
                                                     <div className={style.list_img}>
-                                                        <Image src={`/images/png/${item.image}`} width={500} height={500} alt='Image New Information' className='rounded' />
+                                                        <div className={style.list_img}>
+                                                            <div style={{height: '75px', width: '100%', overflow: "hidden"}}>
+                                                                <Image src={"/images/png/" + item.image} alt="Image Slider" height="520" width="520" className="rounded" style={{height: '100%', width: '100%', display: "block", objectFit:"cover"}} />
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div className="col-8 d-grid align-content-between">
@@ -140,7 +146,11 @@ export default function Information() {
                                             <div className="row">
                                                 <div className="col-4">
                                                     <div className={style.list_img}>
-                                                        <Image src={`/images/png/${item.image}`} height={520} width={520} alt="Image New Information" className="rounded" />
+                                                        <div className={style.list_img}>
+                                                            <div style={{height: '75px', width: '100%', overflow: "hidden"}}>
+                                                                <Image src={"/images/png/" + item.image} alt="Image Slider" height="520" width="520" className="rounded" style={{height: '100%', width: '100%', display: "block", objectFit:"cover"}} />
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div className="col-8 d-grid align-content-between">

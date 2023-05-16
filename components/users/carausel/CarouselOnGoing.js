@@ -110,13 +110,9 @@ export default class CarouselOnGoing extends Component {
                                 <div className='me-2 ms-2'>
                                     <Link className="text-decoration-none text-light" href={`/bid/detail/${item.slug}`}>
                                         <div className={style.card}>
-                                            <Image
-                                                src={"/images/png/" + item.image}
-                                                alt="Image Slider"
-                                                height="250"
-                                                width="250"
-                                                className="rounded"
-                                            />
+                                            <div style={{height: '200px', width: '100%', overflow: "hidden"}}>
+                                                <Image src={"/images/png/" + item.image} alt="Image Slider" height="520" width="520" className="rounded" style={{height: '100%', width: '100%', display: "block", objectFit:"cover"}} />
+                                            </div>
                                             <div className={style.card_body}>
                                                 <h5>{item.artname}</h5>
                                                 <div className="mb-3 mt-2">

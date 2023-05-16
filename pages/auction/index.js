@@ -56,7 +56,9 @@ export default function Auctions() {
                       <div className='col-lg-3 col-md-4 col-sm-6 col-12 mb-3' key={item.id}>
                         <Link className="text-decoration-none text-light" href={`/bid/detail/${item.id}`}>
                           <div className={styles.card}>
-                            <Image src={'/images/png/' + item.image} alt='Image Slider' width="500" height="500" className='rounded' />
+                            <div style={{height: '200px', width: '100%', overflow: "hidden"}}>
+                              <Image src={"/images/png/" + item.image} alt="Image Slider" height="520" width="520" className="rounded" style={{height: '100%', width: '100%', display: "block", objectFit:"cover"}} />
+                            </div>
                             <div className={styles.card_body}>
                               <h5>{item.artname}</h5>
                               <div className="mb-3 mt-2">

@@ -69,16 +69,17 @@ export default function SectionOne() {
                                         </div>
                                     </div>
                                     <div className="col-md-7 col-sm-12">
-                                        <div
-                                            className={`d-flex justify-content-end ${style.section_one_img}`}
-                                        >
-                                            <Image
-                                                src={"/images/png/" + item.image}
-                                                alt="Image Slider"
-                                                height="250"
-                                                width="250"
-                                                className="rounded"
-                                            />
+                                        <div className={`d-flex justify-content-md-end justify-content-sm-center ${style.section_one_img}`} >
+                                            <div style={{height: '300px', width: '100%'}}>
+                                                <Image
+                                                    src={"/images/png/" + item.image}
+                                                    alt="Image Slider"
+                                                    height="520"
+                                                    width="520"
+                                                    className="rounded"
+                                                    style={{height: '100%', width: '100%', display: "block", objectFit:"cover"}}
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -42,7 +42,9 @@ export default function SectionFour() {
                         <div className='col-md-4 col-sm-6 col-12 mb-3' key={index}>
                             <Link className="text-decoration-none text-light" href={`/detail/${item.slug}`} >
                                 <div className={style.card}>
-                                    <Image src={`/images/png/${item.image}`} alt='Image Slider' height={500} width={500} className='rounded-top' />
+                                    <div style={{height: '300px', width: '100%', overflow: "hidden"}}>
+                                        <Image src={"/images/png/" + item.image} alt="Image Slider" height="520" width="520" className="rounded" style={{height: '100%', width: '100%', display: "block", objectFit:"cover"}} />
+                                    </div>
                                     <div className={style.card_body}>
                                         <h5>{item.artname}</h5>
                                         <div className="mb-3 mt-2">
