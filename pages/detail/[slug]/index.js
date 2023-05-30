@@ -103,19 +103,21 @@ export default function Detail() {
                                             <p>price</p>
                                             {data && <h5>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(data.price)}</h5>}
                                         </div>
-                                        <div className={style.buy_button}>
-                                            <div className="row mt-3">
-                                                <div className="col-7">
-                                                    <input className={`btn btn-danger w-100 ${style.btnbuy}`} type="button" value={'Buy Now'} />
-                                                </div>
-                                                <div className="col-5">
-                                                    <button className={`btn text-light w-100 ${style.btnshop}`} onClick={handleAddToCart}>
-                                                        <FontAwesomeIcon className='me-3' icon={faCartShopping} />
-                                                        Add to Cart
-                                                    </button>
+                                        {session ? (
+                                            <div className={style.buy_button}>
+                                                <div className="row mt-3">
+                                                    <div className="col-7">
+                                                        <input className={`btn btn-danger w-100 ${style.btnbuy}`} type="button" value={'Buy Now'} />
+                                                    </div>
+                                                    <div className="col-5">
+                                                        <button className={`btn text-light w-100 ${style.btnshop}`} onClick={handleAddToCart}>
+                                                            <FontAwesomeIcon className='me-3' icon={faCartShopping} />
+                                                            Add to Cart
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        ) : (<></>)}
                                     </div>
                                 </div>
                             </div>

@@ -5,6 +5,8 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from "react"
 import { getSession } from "next-auth/react"
+import snap from "@/components/payment/midtrans"
+import { useRouter } from "next/router"
 
 export default function Cart() {
   const [selectAll, setSelectAll] = useState(false)
@@ -12,8 +14,9 @@ export default function Cart() {
   const [session, setSession] = useState(null)
   const [selectedItems, setSelectedItems] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
-  const [deleteItemData, setDeleteItemData] = useState(null);
+  const [deleteItemData, setDeleteItemData] = useState(null)
   const [isDeleting, setIsDeleting] = useState(null)
+  const router = useRouter()
   
   useEffect(() => {
     const fetchSession = async () => {
@@ -90,6 +93,33 @@ export default function Cart() {
       setIsDeleting(false);
   };
 
+  const handleCheckout = async () => {
+    try {
+      const itemIds = selectedItems.map((itemId) => {
+        const item = data.find((item) => item.id_cart === itemId);
+        return item.uuid_art;
+      });
+
+      const payload = {
+        itemIds,
+        totalPrice,
+      };
+
+      const response = await fetch("/api/payment/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const { redirectUrl } = await response.json();
+      router.push(redirectUrl);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       <header>
@@ -157,7 +187,7 @@ export default function Cart() {
               <div className="col-md-6 col-12">
                 <div className="d-flex justify-content-end align-items-center gap-3">
                   <h5 className={style.h5}>Total Harga : <span>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(totalPrice)}</span></h5>
-                  <button className={`btn btn-danger ${style.btn}`}>Checkout</button>
+                  <button className={`btn btn-danger ${style.btn}`} onClick={handleCheckout}>Checkout</button>
                 </div>
               </div>
             </div>
