@@ -5,7 +5,6 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from "react"
 import { getSession } from "next-auth/react"
-import snap from "@/components/payment/midtrans"
 import { useRouter } from "next/router"
 
 export default function Cart() {
@@ -113,8 +112,36 @@ export default function Cart() {
         body: JSON.stringify(payload),
       });
 
-      const { redirectUrl } = await response.json();
-      router.push(redirectUrl);
+      const { paymentId } = await response.json();
+
+      const paymentResponse = await fetch("/api/payment/status", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ paymentId }),
+      });
+
+      const { status } = await paymentResponse.json();
+
+      if (status === "paid") {
+        // Ubah status item menjadi "lunas" atau "terbayarkan"
+        const updateItemsResponse = await fetch("/api/data/update/items", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ itemIds }),
+        });
+
+        // Redirect ke halaman sukses pembayaran
+        router.push("/success");
+      } else {
+        // Jika status tidak terbayar, tampilkan pesan kesalahan atau tindakan yang sesuai
+        console.error("Payment failed");
+        // Redirect ke halaman gagal pembayaran
+        // router.reload();
+      }
     } catch (error) {
       console.error(error);
     }

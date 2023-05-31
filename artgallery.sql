@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2023 at 12:50 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 31, 2023 at 10:08 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -126,6 +126,14 @@ CREATE TABLE `cart` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id_cart`, `uuid_user`, `uuid_art`, `created_at`, `updated_at`) VALUES
+(5, '4a465b4f-cb5e-4cbf-9527-f50b8d275b9f', '3cca4761-3d5d-4771-8d8e-3be74b70c263', '2023-05-31 06:59:22', '2023-05-31 06:59:22'),
+(6, '4a465b4f-cb5e-4cbf-9527-f50b8d275b9f', '75c3c2ad-9a3d-4228-b616-9dd07f7e55de', '2023-05-31 07:26:07', '2023-05-31 07:26:07');
+
 -- --------------------------------------------------------
 
 --
@@ -196,6 +204,23 @@ INSERT INTO `information` (`id_information`, `title`, `slug`, `information`, `im
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `items`
+--
+
+CREATE TABLE `items` (
+  `id_item` int(11) NOT NULL,
+  `uuid_user` varchar(255) DEFAULT NULL,
+  `uuid_arts` varchar(255) DEFAULT NULL,
+  `payment_id` int(11) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  `times` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `notification`
 --
 
@@ -217,6 +242,24 @@ INSERT INTO `notification` (`id_notification`, `uuid_user`, `content`, `crated_a
 (4, '4a465b4f-cb5e-4cbf-9527-f50b8d275b9f', 'Ini adalah konten percobaan notifikasi ke-2', '2023-05-14 10:08:42', '2023-05-14 10:08:42'),
 (5, '4ced89f0-5b91-43dc-833e-a797d7ae6118', 'Ini adalah konten percobaan notifikasi ke-2', '2023-05-14 10:08:42', '2023-05-14 10:08:42'),
 (6, 'd80df2d6-d49b-4d0e-bbe7-10d3c628faa8', 'Ini adalah konten percobaan notifikasi ke-2', '2023-05-14 10:08:42', '2023-05-14 10:08:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `payment_id` int(11) NOT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `payment_status` varchar(50) DEFAULT NULL,
+  `payment_method` varchar(50) DEFAULT NULL,
+  `transaction_id` varchar(100) DEFAULT NULL,
+  `transaction_time` datetime DEFAULT NULL,
+  `gross_amount` decimal(10,2) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -283,10 +326,23 @@ ALTER TABLE `information`
   ADD PRIMARY KEY (`id_information`);
 
 --
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`id_item`),
+  ADD KEY `payment_id` (`payment_id`);
+
+--
 -- Indexes for table `notification`
 --
 ALTER TABLE `notification`
   ADD PRIMARY KEY (`id_notification`);
+
+--
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`payment_id`);
 
 --
 -- Indexes for table `users`
@@ -315,7 +371,7 @@ ALTER TABLE `arts_bid`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `event`
@@ -330,6 +386,12 @@ ALTER TABLE `information`
   MODIFY `id_information` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
@@ -340,6 +402,16 @@ ALTER TABLE `notification`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `items`
+--
+ALTER TABLE `items`
+  ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`payment_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
