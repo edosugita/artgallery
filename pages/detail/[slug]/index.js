@@ -70,6 +70,69 @@ export default function Detail() {
         }
     }
 
+    const handleCheckout = async () => {
+  try {
+    const itemIds = 1;
+    const totalPrice = data.price;
+    const productNames = data.artname;
+
+    const payload = {
+      itemIds,
+      totalPrice,
+      productNames,
+    };
+
+    const uuidArts = [data.uuid_art]; // Menggunakan array untuk satu data
+
+    await callMidtransAPI(payload, uuidArts);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+async function callMidtransAPI(payload, uuidArts) {
+  try {
+    const response = await fetch("/api/payment/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to call Midtrans API");
+    }
+
+    const uuidUser = session?.user?.user.uuid_user;
+    const uuidArt = uuidArts.join(",");
+    const order_id = payload.itemIds.toString(); // Mengubah menjadi string
+    const payment_status = "pending";
+    const gross_amount = payload.totalPrice;
+
+    const responseData = await fetch("http://localhost:3000/api/data/payment", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        uuidUser,
+        uuidArt,
+        order_id,
+        payment_status,
+        gross_amount,
+      }),
+    });
+
+    const { redirectUrl } = await response.json();
+
+    window.open(redirectUrl);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
     return (
         <>
             <header>
@@ -107,7 +170,7 @@ export default function Detail() {
                                             <div className={style.buy_button}>
                                                 <div className="row mt-3">
                                                     <div className="col-7">
-                                                        <input className={`btn btn-danger w-100 ${style.btnbuy}`} type="button" value={'Buy Now'} />
+                                                        <input className={`btn btn-danger w-100 ${style.btnbuy}`} type="button" onClick={handleCheckout} value={'Buy Now'} />
                                                     </div>
                                                     <div className="col-5">
                                                         <button className={`btn text-light w-100 ${style.btnshop}`} onClick={handleAddToCart}>

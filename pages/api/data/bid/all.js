@@ -3,12 +3,12 @@ import {connect} from "@/lib/db";
 export default async function All(req, res) {
     if (req.method === 'GET') {
         try {
-            const {uuidArt} = req.query
+            const {uuidArt, uuidUser} = req.query
             const connection = await connect()
 
-            let sql = 'SELECT MAX(price_bid) AS max_bid_price FROM arts_bid WHERE uuid_arts = ?';
+            let sql = 'SELECT MAX(ab.price_bid) AS max_bid_price, ab.uuid_user, u.name FROM arts_bid AS ab JOIN users AS u ON ab.uuid_user = u.uuid_user WHERE ab.uuid_arts = ? AND ab.uuid_user = ?';
 
-            const [rows] = await connection.query(sql, uuidArt);
+            const [rows] = await connection.query(sql, [uuidArt, uuidUser]);
 
             connection.end()
 

@@ -20,6 +20,7 @@ export default function BidDetail() {
     const [timeString, setTimeString] = useState('')
     const [date, setDate] = useState(null)
     const [clock, setClock] = useState(null)
+    const [isAuctionEnd, setIsAuctionEnd] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -45,10 +46,12 @@ export default function BidDetail() {
         fetchSession();
     }, [session]);
 
+    const uuidUser = session?.user?.user.uuid_user;
+
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch(`http://localhost:3000/api/data/bid/all?uuidArt=${uuidArt}`)
+                const response = await fetch(`http://localhost:3000/api/data/bid/all?uuidArt=${uuidArt}&uuidUser=${uuidUser}`);
                 const dataBid = await response.json()
                 setDataBid(dataBid)
             } catch (error) {
@@ -56,7 +59,7 @@ export default function BidDetail() {
             }
         }
         fetchData()
-    }, [uuidArt, dataBid]);
+    }, [uuidArt, dataBid, uuidUser]);
 
     useEffect(() => {
         if (data) {
@@ -91,11 +94,76 @@ export default function BidDetail() {
 
             if (timeDiff <= 0) {
                 newTimeString = 'End';
+                setIsAuctionEnd(true);
+            } else {
+                setIsAuctionEnd(false)
             }
 
             setTimeString(newTimeString);
         }
     }, [data]);
+
+    const handleCheckout = async () => {
+        try {
+            const itemIds = 1;
+            const totalPrice = data.price;
+            const productNames = data.artname;
+
+            const payload = {
+            itemIds,
+            totalPrice,
+            productNames,
+            };
+
+            const uuidArts = [data.uuid_art]; // Menggunakan array untuk satu data
+
+            await callMidtransAPI(payload, uuidArts);
+        } catch (error) {
+            console.error(error);
+        }
+        };
+
+        async function callMidtransAPI(payload, uuidArts) {
+        try {
+            const response = await fetch("/api/payment/checkout", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
+            throw new Error("Failed to call Midtrans API");
+            }
+
+            const uuidUser = session?.user?.user.uuid_user;
+            const uuidArt = uuidArts.join(",");
+            const order_id = payload.itemIds.toString(); // Mengubah menjadi string
+            const payment_status = "pending";
+            const gross_amount = payload.totalPrice;
+
+            const responseData = await fetch("http://localhost:3000/api/data/payment", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                uuidUser,
+                uuidArt,
+                order_id,
+                payment_status,
+                gross_amount,
+            }),
+            });
+
+            const { redirectUrl } = await response.json();
+
+            window.open(redirectUrl);
+        } catch (error) {
+            console.error(error);
+        }
+        }
 
 
     useEffect(() => {
@@ -135,45 +203,74 @@ export default function BidDetail() {
                                 <div className="col-12">
                                     <div className={style.buy_information}>
                                         <div className="row">
-                                            <div className="col-md-6 col-sm-6 col-12 mb-3">
-                                                <div className={style.box}>
-                                                    <p>Open Bid</p>
-                                                    {data && <h5>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(data.bid_price)}</h5>}
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 col-sm-6 col-12 mb-3">
-                                                <div className={style.box}>
-                                                    <p>Start Auction</p>
-                                                    {data && <h5>{format(new Date(data.date_start_bid), "dd/MM/yyyy 'at' hh:mm a")}</h5>}
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 col-sm-6 col-12 mb-3">
-                                                <div className={style.box}>
-                                                    <p>Best Bid</p>
-                                                    {dataBid !== null ? (
-                                                        <h5>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(dataBid[0].max_bid_price)}</h5>
-                                                    ) : (
-                                                        <h5>Rp 0,00</h5>
-                                                    )}
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 col-sm-6 col-12 mb-3">
-                                                <div className={style.box}>
-                                                    <p>End Auction</p>
+                                            {isAuctionEnd ? (
+                                                <>
+                                                    <div className="col-12">
+                                                        <div className={style.box}>
+                                                            <p>Winner &#128081;</p>
+                                                            {dataBid[0].max_bid_price !== null ? (
+                                                                <h5>&#128081; {dataBid[0].name} &#128081;</h5>
+                                                            ) : (
+                                                                <h5>No Buyer</h5>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <div className="col-md-6 col-sm-6 col-12 mb-3">
+                                                        <div className={style.box}>
+                                                            <p>Open Bid</p>
+                                                            {data && <h5>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(data.bid_price)}</h5>}
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-md-6 col-sm-6 col-12 mb-3">
+                                                        <div className={style.box}>
+                                                            <p>Start Auction</p>
+                                                            {data && <h5>{format(new Date(data.date_start_bid), "dd/MM/yyyy 'at' hh:mm a")}</h5>}
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-md-6 col-sm-6 col-12 mb-3">
+                                                        <div className={style.box}>
+                                                            <p>Best Bid</p>
+                                                            {dataBid !== null ? (
+                                                                <h5>{new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(dataBid[0].max_bid_price)}</h5>
+                                                            ) : (
+                                                                <h5>Rp 0,00</h5>
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-md-6 col-sm-6 col-12 mb-3">
+                                                        <div className={style.box}>
+                                                            <p>End Auction</p>
 
-                                                    {data && <h5>{timeString}</h5>}
-                                                </div>
-                                            </div>
+                                                            {data && <h5>{timeString}</h5>}
+                                                        </div>
+                                                    </div>
+                                                </>
+                                            )}
                                         </div>
-                                        {session !== null ? (
-                                        <div className={style.buy_button}>
-                                            <div className="row mt-3">
-                                                <div className="col-12">
-                                                    <input className={`btn btn-danger w-100 ${style.btnbuy}`} type="button" value={'Buy Now'} data-bs-toggle="modal" data-bs-target="#placeBid" />
+                                        {isAuctionEnd ? (
+                                            <>
+                                                <div className="row mt-3">
+                                                    <div className="col-12">
+                                                        <input className={`btn btn-danger w-100 ${style.btnbuy}`} type="button" onClick={handleCheckout} value={'Buy'} />
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        ) : <></>}
+                                            </>
+                                        ) : (
+                                            <>
+                                                {session !== null ? (
+                                                <div className={style.buy_button}>
+                                                    <div className="row mt-3">
+                                                        <div className="col-12">
+                                                            <input className={`btn btn-danger w-100 ${style.btnbuy}`} type="button" value={'Buy Now'} data-bs-toggle="modal" data-bs-target="#placeBid" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                ) : <></>}
+                                            </>
+                                        )}
                                     </div>
                                 </div>
                             </div>

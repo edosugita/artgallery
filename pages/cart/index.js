@@ -153,30 +153,36 @@ export default function Cart() {
         throw new Error("Failed to call Midtrans API");
       }
 
-      const { redirectUrl } = await response.json();
-      
       const uuidArt = uuidArts.join(",")
       const order_id = payload.itemIds.join("-")
       const payment_status = "pending"
-      const payment_method = payload.paymentMethods.join(",")
       const gross_amount = payload.totalPrice
+
+      console.log([
+        uuidUser,
+        uuidArt,
+        order_id,
+        payment_status,
+        gross_amount
+      ])
       
-      await fetch("/api/data/payment", {
-        method: "POST",
+      const responseData = await fetch('http://localhost:3000/api/data/payment', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-type': 'application/json'
         },
-        body: JSON.stringify(
+        body: JSON.stringify({
           uuidUser,
           uuidArt,
           order_id,
           payment_status,
-          payment_method,
-          gross_amount,
-        ),
-      });
+          gross_amount
+        })
+      })
 
-      window.open(redirectUrl, "_blank");
+      const { redirectUrl } = await response.json();
+
+      window.open(redirectUrl);
     } catch (error) {
       console.error(error);
     }
