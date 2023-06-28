@@ -123,11 +123,20 @@ export default function Cart() {
         return item.uuid_art;
       });
 
+      const fullName = session?.user?.user.name
+      const email = session?.user?.user.email
+      const phone = session?.user?.user.phone
+      const uuidArt = itemIds.join(",")
+      const payment_status = "pending"
+
       const payload = {
-        itemIds,
+        uuidArt,
         totalPrice,
         paymentMethods: selectedPaymentMethods,
         productNames,
+        fullName,
+        email,
+        phone,
       };
 
       // Mengambil semua uuidArt dari seluruh item dalam data
@@ -152,33 +161,6 @@ export default function Cart() {
       if (!response.ok) {
         throw new Error("Failed to call Midtrans API");
       }
-
-      const uuidArt = uuidArts.join(",")
-      const order_id = payload.itemIds.join("-")
-      const payment_status = "pending"
-      const gross_amount = payload.totalPrice
-
-      console.log([
-        uuidUser,
-        uuidArt,
-        order_id,
-        payment_status,
-        gross_amount
-      ])
-      
-      const responseData = await fetch('http://localhost:3000/api/data/payment', {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify({
-          uuidUser,
-          uuidArt,
-          order_id,
-          payment_status,
-          gross_amount
-        })
-      })
 
       const { redirectUrl } = await response.json();
 

@@ -10,11 +10,11 @@ import EditEmail from "@/components/users/EditEmail"
 import EditPassword from "@/components/users/EditPassword"
 import { getSession } from 'next-auth/react'
 import {useRouter} from "next/router";
-import {requireAuth} from "@/_middleware";
+import {requireAuth} from "../middleware";
 
 export default function Profile() {
     const router = useRouter();
-    const [session, setSession] = useState(null)
+    const [session, setSession] = useState('')
     const [data, setData] = useState(null)
     const [isDataReady, setIsDataReady] = useState(false)
 
@@ -296,7 +296,7 @@ export const getServerSideProps = requireAuth(async (context) => {
     useEffect(() => {
         const user = session.user;
         setUser(user)
-    }, [user])
+    }, [session, user])
 
     return {
         props: {

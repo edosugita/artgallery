@@ -3,18 +3,23 @@ import { Snap } from 'midtrans-client';
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
-      const { totalPrice, selectedItems, paymentMethod } = req.body;
+      const { fullName, email, phone, uuidArt, totalPrice, paymentMethod } = req.body;
 
       const snap = new Snap({
         isProduction: false,
-        serverKey: 'SB-Mid-server-DkcnfBaZymRatOLBvKkLnyCt',
+        serverKey: 'SB-Mid-server-DkcnfBaZymRatOLBvKkLnyCt'
       });
 
       const paymentOptions = {
         transaction_details: {
           order_id: new Date(),
-          gross_amount: totalPrice,
+          gross_amount: totalPrice
         },
+        customer_details: {
+          first_name: fullName,
+          email: email,
+          phone: `0${phone}`
+        }
       };
 
       if (paymentMethod === 'credit_card') {
